@@ -1,4 +1,5 @@
 black
+fastapi[all]
 flake8
 pre-commit
 pylint
