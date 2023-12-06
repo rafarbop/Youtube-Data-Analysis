@@ -15,3 +15,6 @@ test:
 	coverage run -m pytest -v
 	coverage report
 	coverage html
+
+docker-build-local:
+	docker build --file Dockerfile.local -t youtube-data-analysis .

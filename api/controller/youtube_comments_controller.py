@@ -1,14 +1,17 @@
-from controller.base_controller import BaseController
-from service.youtube_api_service import YouTubeApiService
+from api.controller.base_controller import BaseController
+from api.service.youtube_api_service import YouTubeApiService
 
 
 class YouTubeCommentsController(BaseController):
+    """Class Controller for Youtube Comments Requests."""
+
     def __init__(self):
         super().__init__()
         self.youtube_service = YouTubeApiService()
         # self.youtube_comments_service = youtube_comments_service
 
     def get_comments(self, source_id: str):
+        """Get comments for video_id or channel_id of youtube."""
         data = self.youtube_service.get_comments_info(
             source_id=source_id, related_to="video"
         )

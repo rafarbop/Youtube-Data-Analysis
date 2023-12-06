@@ -7,4 +7,5 @@ pre-commit
 pylint
 pytest
 pytest-cov
+python-dotenv
 uvicorn

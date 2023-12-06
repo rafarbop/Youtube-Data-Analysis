@@ -1,15 +1,20 @@
 from typing import Any
 from googleapiclient import discovery
 import pandas as pd
-import json
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
 class YouTubeApiService:
+    """Class for handler all youtube services requests."""
+
     def __init__(self):
         self.youtube_service = discovery.build(
             serviceName="youtube",
             version="v3",
-            developerKey="",
+            developerKey=os.getenv("youtubeApiKey"),
         )
 
     def _get_comment_threads(self, options: dict[str, str | int]) -> Any:
@@ -79,6 +84,7 @@ class YouTubeApiService:
         page_token: str = "",
         all_comments: list[Any] = [],
     ):
+        """Get top level comments for a especify video or channel."""
         comments = []
         if not page_token:
             all_comments = []

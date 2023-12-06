@@ -1,11 +1,15 @@
 from fastapi import FastAPI
-from routes.analysis import router
-
-app = FastAPI()
-
-app.include_router(router)
+from api.routes.analysis import router
 
 
-@app.get("/")
-def main() -> dict[str, str]:
-    return {"status": "OK"}
+def create_app():
+    """Create and run fast api."""
+    app = FastAPI()
+
+    app.include_router(router)
+
+    @app.get("/")
+    def root() -> dict[str, str]:
+        return {"status": "OK"}
+
+    return app
