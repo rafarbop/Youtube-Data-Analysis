@@ -106,8 +106,8 @@ class YouTubeApiService:
             print(f"Detalhe do erro: {e}")
         comments = self._join_comments(response)
         all_comments.extend(comments)
-        if response.get("nextPageToken"):
-            next_page_token = response.get("nextPageToken")
+        next_page_token = response.get("nextPageToken")
+        if next_page_token:
             print(
                 f"Buscando dados da próxima página - nextPageToken: {next_page_token}"
             )
