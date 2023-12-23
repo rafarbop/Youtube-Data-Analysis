@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+Dockerfile.local
+
 # C extensions
 *.so
 
@@ -50,6 +52,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+report/
 
 # Translations
 *.mo
@@ -127,6 +130,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.env-local
 
 # Spyder project settings
 .spyderproject

@@ -1,5 +1,16 @@
 black
+fastapi[all]
+firebase-admin
 flake8
+google-api-python-client
+google-cloud-bigquery
+google-cloud-dataproc
+google-cloud-logging
+google-cloud-storage
+pandas
 pre-commit
 pylint
 pytest
+pytest-cov
+python-dotenv
+uvicorn
