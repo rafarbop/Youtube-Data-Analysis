@@ -86,6 +86,7 @@ class YouTubeApiService:
     ):
         """Get top level comments for a especify video or channel."""
         comments = []
+        response = {}
         if not page_token:
             all_comments = []
         options: dict[str, str | int] = {
@@ -104,6 +105,7 @@ class YouTubeApiService:
         except Exception as e:
             print("Erro na solicitação")
             print(f"Detalhe do erro: {e}")
+            return {"error": "Source ID not found"}
         comments = self._join_comments(response)
         all_comments.extend(comments)
         next_page_token = response.get("nextPageToken")

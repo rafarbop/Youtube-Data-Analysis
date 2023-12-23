@@ -7,8 +7,7 @@ WORKDIR $APP_HOME
 
 COPY . ./
 
-# RUN --mount=type=cache,target=/root/.cache/pip pip install --upgrade pip && \
-#     pip install -r requirements.txt
+
 RUN apt-get update && apt-get install make
 RUN make install
 

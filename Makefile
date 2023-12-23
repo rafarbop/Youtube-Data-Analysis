@@ -16,5 +16,8 @@ test:
 	coverage report
 	coverage html
 
-docker-build-local:
+docker-build:
 	docker build --file Dockerfile.local -t youtube-data-analysis .
+
+docker-run:
+	docker run -p 8000:8000 youtube-data-analysis:latest uvicorn --host 0.0.0.0  run:create_app

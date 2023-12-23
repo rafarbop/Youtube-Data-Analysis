@@ -1,15 +1,15 @@
 from fastapi import FastAPI
-from api.routes.analysis import router
+from api.routes import youtube
 
 
-def create_app():
+def create_app() -> FastAPI:
     """Create and run fast api."""
     app = FastAPI()
 
-    app.include_router(router)
+    app.include_router(youtube.router)
 
     @app.get("/")
-    def root() -> dict[str, str]:
+    def main() -> dict[str, str]:
         return {"status": "OK"}
 
     return app
