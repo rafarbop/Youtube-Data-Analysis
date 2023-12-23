@@ -1,4 +1,11 @@
 Dockerfile
+.python-version
+.pre-commit-config.yaml
+.flake8
+.coveragerc
+tests
+etl
+
 
 # Dev Stuffs and Configs
 
@@ -18,3 +25,5 @@ __pycache__
 __pycache__/
 *.py[cod]
 *.class
+.pytest_cache
+.github
