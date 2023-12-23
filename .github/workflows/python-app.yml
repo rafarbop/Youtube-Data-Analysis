@@ -6,7 +6,6 @@ jobs:
   dev:
     name: deploy cloudrun to dev environment
     if: ${{ github.ref == 'refs/heads/develop' || github.base_ref == 'develop' }}
-    uses: ./.github/workflows/_deployment_dev.yaml
     permissions:
       id-token: write
       contents: read
@@ -14,13 +13,31 @@ jobs:
       environment: dev
       ref: ${{ github.sha }}
     secrets: inherit
-  prod:
-    if: ${{ github.ref == 'refs/heads/main' || github.base_ref == 'main' }}
-    uses: ./.github/workflows/_deployment_prd.yaml
-    permissions:
-      id-token: write
-      contents: read
-    with:
-      environment: prod
-      ref: ${{ github.sha }}
-    secrets: inherit
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Google Auth
+      id: auth
+      uses: 'google-github-actions/auth@v2'
+      with:
+        credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}' # Replace with the name of your GitHub Actions secret
+
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0
+
+    - name: Register gcloud as a Docker credential helper
+      run: gcloud auth configure-docker us-central1-docker.pkg.dev
+
+    - name: build
+      run: gcloud builds submit --region=us-central1 --tag us-central1-docker.pkg.dev/apinomes/api-projetos-images/youtube-commets-analysis
+  # prod:
+  #   if: ${{ github.ref == 'refs/heads/main' || github.base_ref == 'main' }}
+  #   uses: ./.github/workflows/_deployment_prd.yaml
+  #   permissions:
+  #     id-token: write
+  #     contents: read
+  #   with:
+  #     environment: prod
+  #     ref: ${{ github.sha }}
+  #   secrets: inherit
