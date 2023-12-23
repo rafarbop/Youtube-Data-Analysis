@@ -14,13 +14,13 @@ jobs:
       environment: dev
       ref: ${{ github.sha }}
     secrets: inherit
-  prod:
-    if: ${{ github.ref == 'refs/heads/main' || github.base_ref == 'main' }}
-    uses: ./.github/workflows/_deployment_prd.yaml
-    permissions:
-      id-token: write
-      contents: read
-    with:
-      environment: prod
-      ref: ${{ github.sha }}
-    secrets: inherit
+  # prod:
+  #   if: ${{ github.ref == 'refs/heads/main' || github.base_ref == 'main' }}
+  #   uses: ./.github/workflows/_deployment_prd.yaml
+  #   permissions:
+  #     id-token: write
+  #     contents: read
+  #   with:
+  #     environment: prod
+  #     ref: ${{ github.sha }}
+  #   secrets: inherit
