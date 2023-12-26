@@ -22,8 +22,6 @@ jobs:
         - name: Register gcloud as a Docker credential helper
           run: |
             gcloud auth configure-docker us-central1-docker.pkg.dev
-            echo "Listando Contas de Serviço"
-            gcloud iam service-accounts list
             echo "Listando gcloud info"
             gcloud info
 
