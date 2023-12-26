@@ -3,6 +3,7 @@ on:
 
 jobs:
   _deployment_dev:
+    runs-on: ubuntu-latest
     steps:
         - name: Checkout
           uses: actions/checkout@v3
