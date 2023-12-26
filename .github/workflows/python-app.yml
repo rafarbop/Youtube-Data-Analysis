@@ -10,6 +10,8 @@ jobs:
   dev:
     name: Deploy cloudrun to dev environment
     if: ${{ github.ref == 'refs/heads/dev' }}
+    environment:
+      name: ${{ github.ref_name }}
     uses: ./.github/workflows/deploy.yaml
     permissions:
       id-token: write
