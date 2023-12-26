@@ -1,18 +1,19 @@
+name: Deploy to Cloud Run
+
 on:
   push:
-    branches: [dev, main]
+    branches:
+      - 'dev'
+      - 'main'
 
 jobs:
   dev:
-    name: deploy cloudrun to dev environment
-    if: ${{ github.ref == 'refs/heads/develop' || github.base_ref == 'develop' }}
-    uses: ./.github/workflows/_deployment_dev.yaml
+    name: Deploy cloudrun to dev environment
+    if: ${{ github.ref == 'refs/heads/dev' }}
+    uses: ./.github/workflows/deploy.yaml
     permissions:
       id-token: write
       contents: read
-    with:
-      environment: dev
-      ref: ${{ github.sha }}
     secrets: inherit
   # prod:
   #   if: ${{ github.ref == 'refs/heads/main' || github.base_ref == 'main' }}
