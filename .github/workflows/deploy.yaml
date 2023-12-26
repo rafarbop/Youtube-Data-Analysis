@@ -17,10 +17,15 @@ jobs:
             credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
         - name: Set up Google Cloud SDK
-          uses: google-github-actions/setup-gcloud@v0
+          uses: google-github-actions/setup-gcloud@v2.0.1
 
         - name: Register gcloud as a Docker credential helper
-          run: gcloud auth configure-docker us-central1-docker.pkg.dev
+          run: |
+            gcloud auth configure-docker us-central1-docker.pkg.dev
+            echo "Listando Contas de Serviço"
+            gcloud iam service-accounts list
+            echo "Listando gcloud info"
+            gcloud info
 
         - name: build
           run: gcloud builds submit --region=us-central1 --tag us-central1-docker.pkg.dev/apinomes/api-projetos-images/youtube-commets-analysis
