@@ -26,4 +26,4 @@ jobs:
             gcloud info
 
         - name: build
-          run: gcloud builds submit --region=us-central1 --tag us-central1-docker.pkg.dev/apinomes/api-projetos-images/youtube-commets-analysis
+          run: gcloud builds submit --verbosity=debug --region=us-central1 --tag us-central1-docker.pkg.dev/apinomes/api-projetos-images/youtube-commets-analysis
